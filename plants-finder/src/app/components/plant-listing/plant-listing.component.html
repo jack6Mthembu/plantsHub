@@ -1,3 +1,32 @@
-<p>
-  plant-listing works!
-</p>
+<table class="table table-bordered">
+  <thead>
+    <tr>
+      <th scope="col">Common Name</th>
+      <th scope="col">Plant Type</th>
+      <th scope="col">Bloom Time</th>
+      <th scope="col">Flower Color</th>
+      <th scope="col">Soil Type</th>
+      <th scope="col">Habitat Value</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let plant of plants">
+      <td>{{plant.common_name}}</td>
+      <td>{{plant.plant_type}}</td>
+      <td>{{plant.bloom_time}}</td>
+      <td>{{plant.flower_color}}</td>
+      <td>{{plant.soil_type}}</td>
+      <td>{{plant.habitat_value}}</td>
+    </tr>
+    <tr>
+      <td colspan="6">
+        <nav aria-label="Page navigation example">
+          <ul class="pagination">
+            <li class="page-item"><a class="page-link" (click)="onPrevious()">Previous</a></li>
+            <li class="page-item"><a class="page-link" (click)="onNext()">Next</a></li>
+          </ul>
+        </nav>
+      </td>
+    </tr>
+  </tbody>
+</table>
