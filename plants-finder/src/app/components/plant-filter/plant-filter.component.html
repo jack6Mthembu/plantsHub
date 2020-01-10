@@ -1,3 +1,77 @@
-<p>
-  plant-filter works!
-</p>
+
+  <div class="container">
+    <div class="row">
+      <div class="col">
+          <br/>
+        <span>Search by</span>
+        <select class="form-control" [(ngModel)]="selectedFilterOftion" name="selectedFilterOftion">
+          <option value="1">Season</option>
+          <option value="2">Types</option>
+          <option value="3">Location</option>
+          <option value="4">Value</option>
+        </select>
+      </div>
+      <div class="col">
+          <br/>
+          <span>Search</span>
+        <input type="text" required class="form-control" placeholder="Filter" [(ngModel)]="filterValue"
+          name="filterValue" />
+      </div>
+      <div class="col">
+          <br/>
+          <br/>
+        <button class="btn btn-success" (click)="onFilter()">Search</button>
+      </div>
+    </div><br/>
+    <div class="row">
+      <div class="col-md-12">
+        <ul class="list-group">
+          <a *ngFor="let plant of plants;let i = index" class="list-group-item" href="#" data-toggle="modal"
+            data-target="#filterModal"><span (click)="getSelectedPlant(i)">{{plant.common_name}}</span></a>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- Modal -->
+  <div class="modal fade" id="filterModal" tabindex="-1" role="dialog" aria-labelledby="filterModal" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLongTitle" *ngIf="plant!=undefined">{{plant.common_name}}</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <table class="table table-striped" *ngIf="plant!=undefined">
+            <thead>
+              <tr>
+                <th scope="col">Common Name</th>
+                <th scope="col">Plant Type</th>
+                <th scope="col">Bloom Time</th>
+                <th scope="col">Flower Color</th>
+                <th scope="col">Soil Type</th>
+                <th scope="col">Habitat Value</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngIf="plant!=undefined">
+                <td>{{plant.common_name}}</td>
+                <td>{{plant.plant_type}}</td>
+                <td>{{plant.bloom_time}}</td>
+                <td>{{plant.flower_color}}</td>
+                <td>{{plant.soil_type}}</td>
+                <td>{{plant.habitat_value}}</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+

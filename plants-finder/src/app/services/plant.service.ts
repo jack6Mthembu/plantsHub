@@ -23,7 +23,7 @@ export class PlantService {
       }));
   }
 
-  filterPlants(filterColumn: string, value: string) {
+  getPlantsByColumnName(filterColumn: string, value: string) {
     return this.httpClient
       .get<IPlant[]>(`${this.apiUrl}&$limit=10&${filterColumn}=${value}`, {
       })
