@@ -1,3 +1,81 @@
-<p>
-  create works!
-</p>
+<div class="container">
+  <form (ngSubmit)="onSubmit(plantsForm)" #plantsForm="ngForm">
+    <div class="form-row">
+      <div class="form-group col-md-6">
+        <label for="commonName">Common Name</label>
+        <input
+          required
+          type="text"
+          class="form-control"
+          ngModel
+          name="commonName"
+          #commonName="ngModel"
+          placeholder="common Name"
+          maxlength="25"/>
+          <span *ngIf="!commonName.valid && commonName.touched" class="help-block">common Name required</span>
+      </div>
+
+      <div class="form-group col-md-6">
+        <label for="type">Flower colour</label>
+        <input
+          required
+          type="text"
+          class="form-control"
+          ngModel
+          name="colour"
+          #colour="ngModel"
+          maxlength="15"
+          minlength="3"
+          placeholder="Flower colour"/>
+          <span *ngIf="!colour.valid && colour.touched" class="help-block">Flower colour required with the minimum of 3 charecters</span>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="soilType">Soil Type</label>
+      <input
+        type="text"
+        class="form-control"
+        ngModel
+        name="soilType"
+        placeholder="Soil Type"/>
+    </div>
+
+    <div class="form-row">
+      <div class="form-group col-md-4">
+        <label for="soil">Plant Type</label>
+        <select  [ngModel]="defaultPlantType" name="plantType" class="form-control" required #plantType="ngModel">
+          <option value="Shrub">Shrub</option>
+          <option value="Tree">Tree</option>
+          <option value="Perennial">Perennial</option>
+          <optgroup>Grass</optgroup>
+        </select>
+        <span *ngIf="!plantType.valid && plantType.touched" class="help-block">Plant Type required</span>
+      </div>
+
+      <div class="form-group col-md-4">
+        <label for="inputState">Bloom Time</label>
+        <select [ngModel]="defaultBloomTime" name="season" class="form-control" required #bloomTime="ngModel">
+          <option value="Summer">Summer</option>
+          <option value="Winter">Winter</option>
+          <option value="Spring">Spring</option>
+          <option value="Autumn">Autumn</option>
+        </select>
+        <span *ngIf="!bloomTime.valid && bloomTime.touched" class="help-block">Bloom Time Type required</span>
+      </div>
+
+      <div class="form-group col-md-4">
+        <label for="colour">Habitant Value</label>
+        <input
+        type="text"
+        class="form-control"
+        ngModel
+        name="havitantValue"
+        placeholder="Habitant Value"/>
+      </div>
+    </div>
+
+    <button [disabled]="plantsForm!=invalid" type="submit" class="btn btn-primary">Save</button>
+  </form>
+</div>
+
