@@ -39,4 +39,16 @@ describe('PlantListingComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  describe('--Setup--', () => {
+    it('should call Plants Service', () => {
+        expect(getPlantsSpy).toHaveBeenCalled();
+    });
+  });
+
+  describe('--display--', () => {
+    it('should display plants', () => {
+      expect(component.plants.length).toEqual(testData.length);
+    });
+  });
 });
