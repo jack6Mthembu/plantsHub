@@ -1,0 +1,8 @@
+1.Navigate to Plants Hub Repository on your local machine.
+2.Open plantsHub folder.
+3.Right click on plants-finder folder.
+4.Select Open with code option
+5.Run npm install
+6.Run Ng serve
+
+//NB Make sure you have visual studio code installed.
